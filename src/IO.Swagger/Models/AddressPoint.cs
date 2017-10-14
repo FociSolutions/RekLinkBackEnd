@@ -48,7 +48,7 @@ namespace IO.Swagger.Models
         /// <param name="Country">Country (required).</param>
         /// <param name="PostalCode">PostalCode (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public AddressPoint(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string Country = null, string PostalCode = null, MetaData MetaData = null)
+        public AddressPoint(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string City = null, string Country = null, string PostalCode = null, MetaData MetaData = null)
         {
             // to ensure "Number" is required (not null)
             if (Number == null)
@@ -67,6 +67,15 @@ namespace IO.Swagger.Models
             else
             {
                 this.AddressLine1 = AddressLine1;
+            }
+            // to ensure "City" is required (not null)
+            if (City == null)
+            {
+                throw new InvalidDataException("Province is a required property for AddressPoint and cannot be null");
+            }
+            else
+            {
+                this.City = City;
             }
             // to ensure "Province" is required (not null)
             if (Province == null)
@@ -121,6 +130,12 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Gets or Sets Province
         /// </summary>
+        [DataMember(Name = "city")]
+        public string City { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Province
+        /// </summary>
         [DataMember(Name="province")]
         public string Province { get; set; }
 
@@ -154,6 +169,7 @@ namespace IO.Swagger.Models
             sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
             sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
+            sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
@@ -210,7 +226,12 @@ namespace IO.Swagger.Models
                     this.AddressLine2 == other.AddressLine2 ||
                     this.AddressLine2 != null &&
                     this.AddressLine2.Equals(other.AddressLine2)
-                ) && 
+                ) &&
+                (
+                    this.City == other.City ||
+                    this.City != null &&
+                    this.City.Equals(other.City)
+                ) &&
                 (
                     this.Province == other.Province ||
                     this.Province != null &&
@@ -250,6 +271,8 @@ namespace IO.Swagger.Models
                     hash = hash * 59 + this.AddressLine1.GetHashCode();
                 if (this.AddressLine2 != null)
                     hash = hash * 59 + this.AddressLine2.GetHashCode();
+                if (this.City != null)
+                    hash = hash * 59 + this.City.GetHashCode();
                 if (this.Province != null)
                     hash = hash * 59 + this.Province.GetHashCode();
                 if (this.Country != null)
