@@ -32,6 +32,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Swashbuckle.SwaggerGen.Annotations;
 using IO.Swagger.Models;
+using Geocoding;
 
 namespace IO.Swagger.Controllers
 { 
