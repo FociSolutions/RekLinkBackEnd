@@ -48,7 +48,7 @@ namespace IO.Swagger.Models
         /// <param name="Country">Country (required).</param>
         /// <param name="PostalCode">PostalCode (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public AddressPoint(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string City = null, string Country = null, string PostalCode = null, MetaData MetaData = null)
+        public AddressPoint(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string City = null, string Country = null, string PostalCode = null, string MetaData = null)
         {
             // to ensure "Number" is required (not null)
             if (Number == null)
@@ -155,7 +155,7 @@ namespace IO.Swagger.Models
         /// Gets or Sets MetaData
         /// </summary>
         [DataMember(Name="metaData")]
-        public MetaData MetaData { get; set; }
+        public string MetaData { get; set; }
 
 
         /// <summary>

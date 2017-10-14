@@ -18,9 +18,13 @@ namespace IO.Swagger
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                .UseKestrel(options =>
+                {
+
+                })
                 .UseUrls("http://+:5000" /*, "https://+:5001" */)
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
     }
