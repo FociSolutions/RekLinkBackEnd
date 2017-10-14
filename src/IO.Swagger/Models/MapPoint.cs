@@ -44,7 +44,7 @@ namespace IO.Swagger.Models
         /// <param name="Latitude">Latitude (required).</param>
         /// <param name="Longitude">Longitude (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public MapPoint(decimal Latitude, decimal Longitude, MetaData MetaData = null)
+        public MapPoint(double Latitude, double Longitude, string MetaData = null)
         {
             this.Latitude = Latitude;
             this.Longitude = Longitude;
@@ -56,19 +56,19 @@ namespace IO.Swagger.Models
         /// Gets or Sets Latitude
         /// </summary>
         [DataMember(Name="latitude")]
-        public decimal Latitude { get; set; }
+        public double Latitude { get; set; }
 
         /// <summary>
         /// Gets or Sets Longitude
         /// </summary>
         [DataMember(Name="longitude")]
-        public decimal Longitude { get; set; }
+        public double Longitude { get; set; }
 
         /// <summary>
         /// Gets or Sets MetaData
         /// </summary>
         [DataMember(Name="metaData")]
-        public MetaData MetaData { get; set; }
+        public string MetaData { get; set; }
 
 
         /// <summary>

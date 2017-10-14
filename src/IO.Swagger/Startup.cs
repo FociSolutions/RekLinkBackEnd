@@ -35,6 +35,8 @@ using Newtonsoft.Json.Serialization;
 using Swashbuckle.Swagger.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.EntityFrameworkCore;
+using IO.Swagger.Repositories;
+using IO.Swagger.Services;
 
 namespace IO.Swagger
 {
@@ -85,7 +87,8 @@ namespace IO.Swagger
 
             var connectionString = Configuration.GetConnectionString("MappingContext");
             services.AddEntityFrameworkNpgsql().AddDbContext<MappingContext>(options => options.UseNpgsql(connectionString));
-
+            services.AddTransient<IMapPointRepository, MapPointRepository>();
+            services.AddTransient<MapPointService, MapPointService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

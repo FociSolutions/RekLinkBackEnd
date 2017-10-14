@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IO.Swagger.Repositories
 {
-    public class MapPointRepository : GenericRepository<MapPoint>
+    public class MapPointRepository : GenericRepository<MapPoint>, IMapPointRepository
     {
         public MapPointRepository(MappingContext context) : base(context)
         {

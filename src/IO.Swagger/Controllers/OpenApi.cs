@@ -33,6 +33,7 @@ using Newtonsoft.Json;
 using Swashbuckle.SwaggerGen.Annotations;
 using IO.Swagger.Models;
 using Geocoding;
+using IO.Swagger.Services;
 
 namespace IO.Swagger.Controllers
 { 
@@ -41,11 +42,11 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class OpenApiController : Controller
     {
-        private MappingContext context;
+        private MapPointService mapPointService;
 
-        public OpenApiController(MappingContext context)
+        public OpenApiController(MapPointService mapPointService)
         {
-            this.context = context;
+            this.mapPointService = mapPointService;
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace IO.Swagger.Controllers
         [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
         [SwaggerOperation("Search")]
         [SwaggerResponse(200, type: typeof(List<MapPoint>))]
-        public virtual IActionResult Search([FromBody]MetaData metaData)
+        public virtual IActionResult Search([FromBody]string metaData)
         { 
             string exampleJson = null;
             
@@ -97,9 +98,9 @@ namespace IO.Swagger.Controllers
         [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
         [SwaggerOperation("SearchInventory")]
         [SwaggerResponse(200, type: typeof(List<MapPoint>))]
-        public virtual IActionResult SearchInventory()
+        public virtual IActionResult SearchInventory([FromQuery]double neLat, [FromQuery]double neLong, [FromQuery]double swLat, [FromQuery]double swLong)
         {
-            var example = context.MapPoints;
+            var example = this.mapPointService.GetFencedData(neLat, neLong, swLat, swLong);
 
             return new ObjectResult(example);
         }
