@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace IO.Swagger.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,45 +37,18 @@ namespace IO.Swagger.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Latitude = table.Column<string>(type: "text", nullable: true),
-                    Longitude = table.Column<string>(type: "text", nullable: true)
+                    Latitude = table.Column<decimal>(type: "numeric", nullable: false),
+                    Longitude = table.Column<decimal>(type: "numeric", nullable: false),
+                    MetaData = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MapPoints", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "MetaData",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uuid", nullable: false),
-                    Key = table.Column<string>(type: "text", nullable: true),
-                    MapPointId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Value = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MetaData", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_MetaData_MapPoints_MapPointId",
-                        column: x => x.MapPointId,
-                        principalTable: "MapPoints",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MetaData_MapPointId",
-                table: "MetaData",
-                column: "MapPointId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "MetaData");
-
             migrationBuilder.DropTable(
                 name: "MapPoints");
         }

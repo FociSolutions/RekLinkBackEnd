@@ -44,26 +44,10 @@ namespace IO.Swagger.Models
         /// <param name="Latitude">Latitude (required).</param>
         /// <param name="Longitude">Longitude (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public MapPoint(string Latitude = null, string Longitude = null, MetaData MetaData = null)
+        public MapPoint(decimal Latitude, decimal Longitude, MetaData MetaData = null)
         {
-            // to ensure "Latitude" is required (not null)
-            if (Latitude == null)
-            {
-                throw new InvalidDataException("Latitude is a required property for MapPoint and cannot be null");
-            }
-            else
-            {
-                this.Latitude = Latitude;
-            }
-            // to ensure "Longitude" is required (not null)
-            if (Longitude == null)
-            {
-                throw new InvalidDataException("Longitude is a required property for MapPoint and cannot be null");
-            }
-            else
-            {
-                this.Longitude = Longitude;
-            }
+            this.Latitude = Latitude;
+            this.Longitude = Longitude;
             this.MetaData = MetaData;
             
         }
@@ -72,13 +56,13 @@ namespace IO.Swagger.Models
         /// Gets or Sets Latitude
         /// </summary>
         [DataMember(Name="latitude")]
-        public string Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
         /// <summary>
         /// Gets or Sets Longitude
         /// </summary>
         [DataMember(Name="longitude")]
-        public string Longitude { get; set; }
+        public decimal Longitude { get; set; }
 
         /// <summary>
         /// Gets or Sets MetaData

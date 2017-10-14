@@ -10,8 +10,7 @@ namespace IO.Swagger.Database
     {
         [Key]
         public Guid ID { get; set; }
-        public string Key { get; set; }
-        public string Value { get; set; }
-        public MapPoint MapPoint { get; set; }
+        public decimal Key { get; set; }
+        public decimal Value { get; set; }
     }
 }
