@@ -66,29 +66,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult((mapPointService.AddMapdData(mapPoint)));
         }
 
-
-        /// <summary>
-        /// Searches mapping points
-        /// </summary>
-        /// <remarks>Searches the mapping points for the given metadata types </remarks>
-        /// <param name="metaData">meta data of the mapping point</param>
-        /// <response code="200">search results matching criteria</response>
-        /// <response code="400">bad input parameter</response>
-        [HttpPut]
-        [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
-        [SwaggerOperation("Search")]
-        [SwaggerResponse(200, type: typeof(List<MapPoint>))]
-        public virtual IActionResult Search([FromBody]string metaData)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<MapPoint>>(exampleJson)
-            : default(List<MapPoint>);
-            return new ObjectResult(example);
-        }
-
-
     /// <summary>
         /// Gets all mapping points
         /// </summary>
