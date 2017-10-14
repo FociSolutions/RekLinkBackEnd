@@ -98,11 +98,8 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(200, type: typeof(List<MapPoint>))]
         public virtual IActionResult SearchInventory()
         {
-            string exampleJson = null;
-            
-            var example = context.MapPoints != null
-            ? JsonConvert.DeserializeObject<List<MapPoint>>(exampleJson)
-            : default(List<MapPoint>);
+            var example = context.MapPoints;
+
             return new ObjectResult(example);
         }
     }

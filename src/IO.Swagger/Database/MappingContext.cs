@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using IO.Swagger.Models;
+using IO.Swagger.Database;
 
 namespace IO.Swagger
 {
@@ -51,5 +51,6 @@ namespace IO.Swagger
         /// Mapping data dbset
         /// </summary>
         public DbSet<MapPoint> MapPoints { get; set; }
+        public DbSet<MetaData> MetaData { get; set; }
     }
 }
