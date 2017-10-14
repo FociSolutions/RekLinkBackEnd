@@ -6,6 +6,7 @@ using IO.Swagger.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using IO.Swagger.Models;
 
 namespace IO.Swagger.Services
 {
@@ -25,9 +26,30 @@ namespace IO.Swagger.Services
             var swPoint = new GeoCoordinate(swLat, swLong);
             var mapPoints = this.repository.GetAll();
 
-            var points = mapPoints.Where(m => new GeoCoordinate(m.Latitude, m.Longitude).isWithin(swPoint, nePoint));
+            var points = mapPoints;//.Where(m => new GeoCoordinate(m.Latitude, m.Longitude).isWithin(swPoint, nePoint));
 
             return points.Select(p => new MapPoint(p.Latitude, p.Longitude, p.MetaData));
+        }
+
+
+        public Guid AddMapdData(MapPoint mapPoint)
+        {
+            Database.MapPoint tosave = new Database.MapPoint()
+            {
+                Latitude = mapPoint.Latitude,
+                Longitude = mapPoint.Longitude,
+                MetaData = mapPoint.MetaData };
+            try
+            {
+                repository.Insert(tosave);
+                return tosave.Id;
+            }
+
+            catch
+            {
+                throw new Exception("Could not save map point");
+            }
+
         }
 
     }

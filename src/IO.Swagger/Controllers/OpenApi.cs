@@ -60,9 +60,10 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
         [SwaggerOperation("AddMappingPoint")]
-        public virtual void AddMappingPoint([FromBody]AddressPoint mapPoint)
-        { 
-            throw new NotImplementedException();
+        public virtual IActionResult AddMappingPoint([FromBody]MapPoint mapPoint)
+        {
+
+            return new ObjectResult((mapPointService.AddMapdData(mapPoint)));
         }
 
 
@@ -88,7 +89,7 @@ namespace IO.Swagger.Controllers
         }
 
 
-        /// <summary>
+    /// <summary>
         /// Gets all mapping points
         /// </summary>
         /// <remarks>By passing in the appropriate options, you can search for available mapping points in the system </remarks>
