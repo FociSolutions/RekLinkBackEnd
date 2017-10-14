@@ -45,7 +45,7 @@ namespace IO.Swagger.Services
                 return tosave.Id;
             }
 
-            catch
+            catch(Exception e)
             {
                 throw new Exception("Could not save map point");
             }
