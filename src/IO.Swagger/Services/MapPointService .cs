@@ -1,10 +1,11 @@
 ﻿using Geocoding;
 using Geocoding.Google;
+using IO.Swagger.Repositories;
 using System;
 
 namespace IO.Swagger.Services
 {
-    public class MapPointService
+    public class MapPointService : IMapPointService
     {
         IGeocoder geoCoder;
 
