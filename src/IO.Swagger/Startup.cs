@@ -34,6 +34,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Swagger.Model;
 using Swashbuckle.SwaggerGen.Annotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace IO.Swagger
 {
@@ -54,8 +55,8 @@ namespace IO.Swagger
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
-  
-    
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -81,7 +82,10 @@ namespace IO.Swagger
                 options.OperationFilter<XmlCommentsOperationFilter>(comments);
                 options.ModelFilter<XmlCommentsModelFilter>(comments);
             });
-            
+
+            var connectionString = Configuration.GetConnectionString("MappingContext");
+            services.AddEntityFrameworkNpgsql().AddDbContext<MappingContext>(options => options.UseNpgsql(connectionString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

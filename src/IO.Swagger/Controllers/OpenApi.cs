@@ -39,7 +39,13 @@ namespace IO.Swagger.Controllers
     /// 
     /// </summary>
     public class OpenApiController : Controller
-    { 
+    {
+        private MappingContext context;
+
+        public OpenApiController(MappingContext context)
+        {
+            this.context = context;
+        }
 
         /// <summary>
         /// adds a mapping point
@@ -91,10 +97,10 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("SearchInventory")]
         [SwaggerResponse(200, type: typeof(List<MapPoint>))]
         public virtual IActionResult SearchInventory()
-        { 
+        {
             string exampleJson = null;
             
-            var example = exampleJson != null
+            var example = context.MapPoints != null
             ? JsonConvert.DeserializeObject<List<MapPoint>>(exampleJson)
             : default(List<MapPoint>);
             return new ObjectResult(example);
