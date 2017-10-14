@@ -47,38 +47,15 @@ namespace IO.Swagger.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Latitude");
+                    b.Property<decimal>("Latitude");
 
-                    b.Property<string>("Longitude");
+                    b.Property<decimal>("Longitude");
+
+                    b.Property<string>("MetaData");
 
                     b.HasKey("Id");
 
                     b.ToTable("MapPoints");
-                });
-
-            modelBuilder.Entity("IO.Swagger.Database.MetaData", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Key");
-
-                    b.Property<Guid?>("MapPointId");
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("MapPointId");
-
-                    b.ToTable("MetaData");
-                });
-
-            modelBuilder.Entity("IO.Swagger.Database.MetaData", b =>
-                {
-                    b.HasOne("IO.Swagger.Database.MapPoint", "MapPoint")
-                        .WithMany("MetaData")
-                        .HasForeignKey("MapPointId");
                 });
 #pragma warning restore 612, 618
         }

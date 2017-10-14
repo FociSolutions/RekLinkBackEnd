@@ -11,9 +11,9 @@ namespace IO.Swagger.Database
         [Key]
         public Guid Id { get; set; }
 
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
-        public ICollection<MetaData> MetaData { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public string MetaData { get; set; }
 
     }
 }

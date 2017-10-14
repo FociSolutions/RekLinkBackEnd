@@ -1,29 +1,31 @@
 ﻿using Geocoding;
 using Geocoding.Google;
+using GeoCoordinatePortable;
+using IO.Swagger.Models;
 using IO.Swagger.Repositories;
 using System;
+using System.Linq;
 
 namespace IO.Swagger.Services
 {
-    public class MapPointService : IMapPointService
+    public class MapPointService
     {
-        IGeocoder geoCoder;
+        private IMapPointRepository repository;
 
-        public IGeocoder CreateAsyncGeocoder()
+        public MapPointService(IMapPointRepository repository)
         {
-            string apiKey = string.Empty; // settings.GoogleApiKey;
+            this.repository = repository;
+        }
 
-            if (String.IsNullOrEmpty(apiKey))
-            {
-                geoCoder = new GoogleGeocoder();
-            }
-            else
-            {
-                geoCoder = new GoogleGeocoder(apiKey);
-            }
 
-            return geoCoder;
+        public IEquatable<MapPoint> GetFencedData(string neLat, string neLong, string swLat, string swLong)
+        {
+            var mapPoints = this.repository.GetAll();
+            var geoPoints = mapPoints.Select(x => new GeoCoordinate());
+
+            throw new NotImplementedException();
         }
 
     }
+
 }

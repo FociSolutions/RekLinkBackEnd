@@ -51,6 +51,5 @@ namespace IO.Swagger
         /// Mapping data dbset
         /// </summary>
         public DbSet<MapPoint> MapPoints { get; set; }
-        public DbSet<MetaData> MetaData { get; set; }
     }
 }
