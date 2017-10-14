@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace IO.Swagger.Repositories
 {
-    interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
+        IQueryable<T> Search();
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);

@@ -21,6 +21,12 @@ namespace IO.Swagger.Repositories
         {
             return entities.AsEnumerable();
         }
+
+        public IQueryable<T> Search()
+        {
+            return entities.AsQueryable();
+        }
+
         public void Insert(T entity)
         {
             if (entity == null)
