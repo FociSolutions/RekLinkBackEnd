@@ -61,7 +61,7 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
         [SwaggerOperation("AddMappingPoint")]
-        public virtual IActionResult AddMappingPoint([FromBody]MapPoint mapPoint)
+        public virtual IActionResult AddMappingPoint([FromBody]MapPointDTO mapPoint)
         {
 
             return new ObjectResult((mapPointService.AddMapdData(mapPoint)));
@@ -76,7 +76,7 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/RecLink/RecLInkMapping/1.0.0/MappingPoint")]
         [SwaggerOperation("SearchInventory")]
-        [SwaggerResponse(200, type: typeof(List<MapPoint>))]
+        [SwaggerResponse(200, type: typeof(List<MapPointDTO>))]
         public virtual IActionResult SearchInventory([FromQuery]double neLat, [FromQuery]double neLong, [FromQuery]double swLat, [FromQuery]double swLong)
         {
             var example = this.mapPointService.GetFencedData(neLat, neLong, swLat, swLong);

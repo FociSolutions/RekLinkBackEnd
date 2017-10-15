@@ -7,8 +7,8 @@ namespace IO.Swagger.Services.Interfaces
 {
     public interface IMapPointService
     {
-        IEnumerable<MapPoint> GetFencedData(double neLat, double neLong, double swLat, double swLong);
+        IEnumerable<MapPointDTO> GetFencedData(double neLat, double neLong, double swLat, double swLong);
 
-        Guid AddMapdData(MapPoint mapPoint);
+        Guid AddMapdData(MapPointDTO mapPoint);
     }
 }

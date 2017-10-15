@@ -36,10 +36,10 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class AddressPoint :  IEquatable<AddressPoint>
+    public partial class AddressPointDTO :  IEquatable<AddressPointDTO>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddressPoint" /> class.
+        /// Initializes a new instance of the <see cref="AddressPointDTO" /> class.
         /// </summary>
         /// <param name="Number">Number (required).</param>
         /// <param name="AddressLine1">AddressLine1 (required).</param>
@@ -48,7 +48,7 @@ namespace IO.Swagger.Models
         /// <param name="Country">Country (required).</param>
         /// <param name="PostalCode">PostalCode (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public AddressPoint(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string City = null, string Country = null, string PostalCode = null, string MetaData = null)
+        public AddressPointDTO(string Number = null, string AddressLine1 = null, string AddressLine2 = null, string Province = null, string City = null, string Country = null, string PostalCode = null, string MetaData = null)
         {
             // to ensure "Number" is required (not null)
             if (Number == null)
@@ -197,7 +197,7 @@ namespace IO.Swagger.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((AddressPoint)obj);
+            return Equals((AddressPointDTO)obj);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace IO.Swagger.Models
         /// </summary>
         /// <param name="other">Instance of AddressPoint to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AddressPoint other)
+        public bool Equals(AddressPointDTO other)
         {
 
             if (ReferenceEquals(null, other)) return false;
@@ -287,12 +287,12 @@ namespace IO.Swagger.Models
 
         #region Operators
 
-        public static bool operator ==(AddressPoint left, AddressPoint right)
+        public static bool operator ==(AddressPointDTO left, AddressPointDTO right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(AddressPoint left, AddressPoint right)
+        public static bool operator !=(AddressPointDTO left, AddressPointDTO right)
         {
             return !Equals(left, right);
         }

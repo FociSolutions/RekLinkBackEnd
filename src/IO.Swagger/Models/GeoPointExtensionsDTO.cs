@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IO.Swagger.Models
 {
-    public static class GeoPointExtensions
+    public static class GeoPointExtensionsDTO
     {
         public static Boolean isWithin(this GeoCoordinate pt, GeoCoordinate sw, GeoCoordinate ne)
         {

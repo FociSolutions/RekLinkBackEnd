@@ -36,15 +36,15 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class MapPoint :  IEquatable<MapPoint>
+    public partial class MapPointDTO :  IEquatable<MapPointDTO>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MapPoint" /> class.
+        /// Initializes a new instance of the <see cref="MapPointDTO" /> class.
         /// </summary>
         /// <param name="Latitude">Latitude (required).</param>
         /// <param name="Longitude">Longitude (required).</param>
         /// <param name="MetaData">MetaData.</param>
-        public MapPoint(double Latitude, double Longitude, string MetaData = null)
+        public MapPointDTO(double Latitude, double Longitude, string MetaData = null)
         {
             this.Latitude = Latitude;
             this.Longitude = Longitude;
@@ -105,7 +105,7 @@ namespace IO.Swagger.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((MapPoint)obj);
+            return Equals((MapPointDTO)obj);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace IO.Swagger.Models
         /// </summary>
         /// <param name="other">Instance of MapPoint to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MapPoint other)
+        public bool Equals(MapPointDTO other)
         {
 
             if (ReferenceEquals(null, other)) return false;
@@ -160,12 +160,12 @@ namespace IO.Swagger.Models
 
         #region Operators
 
-        public static bool operator ==(MapPoint left, MapPoint right)
+        public static bool operator ==(MapPointDTO left, MapPointDTO right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(MapPoint left, MapPoint right)
+        public static bool operator !=(MapPointDTO left, MapPointDTO right)
         {
             return !Equals(left, right);
         }
