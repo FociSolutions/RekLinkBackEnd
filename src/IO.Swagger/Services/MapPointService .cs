@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using IO.Swagger.Models;
+using IO.Swagger.Services.Interfaces;
+using IO.Swagger.Repositories.Interfaces;
 
 namespace IO.Swagger.Services
 {

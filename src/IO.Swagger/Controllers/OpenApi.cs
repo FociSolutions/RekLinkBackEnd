@@ -34,6 +34,7 @@ using Swashbuckle.SwaggerGen.Annotations;
 using IO.Swagger.Models;
 using Geocoding;
 using IO.Swagger.Services;
+using IO.Swagger.Services.Interfaces;
 
 namespace IO.Swagger.Controllers
 { 

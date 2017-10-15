@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using IO.Swagger.Models;
 
 
-namespace IO.Swagger.Services
+namespace IO.Swagger.Services.Interfaces
 {
     public interface IMapPointService
     {

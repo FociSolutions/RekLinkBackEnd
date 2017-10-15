@@ -37,6 +37,8 @@ using Swashbuckle.SwaggerGen.Annotations;
 using Microsoft.EntityFrameworkCore;
 using IO.Swagger.Repositories;
 using IO.Swagger.Services;
+using IO.Swagger.Repositories.Interfaces;
+using IO.Swagger.Services.Interfaces;
 
 namespace IO.Swagger
 {
