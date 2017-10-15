@@ -42,9 +42,9 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class OpenApiController : Controller
     {
-        private MapPointService mapPointService;
+        private IMapPointService mapPointService;
 
-        public OpenApiController(MapPointService mapPointService)
+        public OpenApiController(IMapPointService mapPointService)
         {
             this.mapPointService = mapPointService;
         }

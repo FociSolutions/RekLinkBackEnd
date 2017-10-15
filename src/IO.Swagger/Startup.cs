@@ -62,11 +62,11 @@ namespace IO.Swagger
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc()
-                .AddJsonOptions(
-                    opts => { opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver(); });
-            
+           //Add framework services.
+           services.AddMvc()
+               .AddJsonOptions(
+                   opts => { opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver(); });
+
             services.AddSwaggerGen();
             
             services.ConfigureSwaggerGen(options =>
@@ -88,7 +88,7 @@ namespace IO.Swagger
             var connectionString = Configuration.GetConnectionString("MappingContext");
             services.AddEntityFrameworkNpgsql().AddDbContext<MappingContext>(options => options.UseNpgsql(connectionString));
             services.AddTransient<IMapPointRepository, MapPointRepository>();
-            services.AddTransient<MapPointService, MapPointService>();
+            services.AddTransient<IMapPointService, MapPointService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

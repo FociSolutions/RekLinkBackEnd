@@ -10,7 +10,7 @@ using IO.Swagger.Models;
 
 namespace IO.Swagger.Services
 {
-    public class MapPointService
+    public class MapPointService : IMapPointService
     {
         private IMapPointRepository repository;
 
